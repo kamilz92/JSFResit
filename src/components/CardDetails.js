@@ -21,7 +21,7 @@ const CardDetails = ({ img, name, data }) => {
         <button onClick={handleClick} className="details__btn">
           {info ? "Close more info" : "Show more info"}
         </button>
-        {info ? null : <ReadMore data={data}/>}
+        {info ? <ReadMore data={data}/> : null}
       </div>
     </div>
   );
