@@ -1,0 +1,49 @@
+// Colors
+$red: #DC3D24;
+$white: #FFFFFF;
+$black: #232B2B;
+
+@keyframes movePoke {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(200px) rotate(360deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+.pokeball {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to bottom, $red 50%, $white 50%);
+  border-radius: 50%;
+  border: 2px solid $black;
+  position: relative;
+  animation: movePoke 4s infinite;
+  &::after,&::before {
+    content: "";
+    position: absolute;
+  }
+  &::after {
+    height: 2px;
+    top: calc(50% - 1px);
+    width: 100px;
+    background-color: $black;
+  }
+  &::before {
+    width: 4px;
+    height: 4px;
+    background-color: $white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    box-shadow: 0 0 0 6px $white,
+                0 0 0 8px $black,
+                0 0 0 10px $white,
+                0 0 0 12px $black;
+  }
+}
