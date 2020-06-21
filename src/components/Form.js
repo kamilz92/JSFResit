@@ -1,103 +1,96 @@
 import React, { Component } from "react";
 
-export default class Form extends Component {
+class Form extends Component {
   state = {
     name: "",
     phone: "",
     option: "",
     message: "",
-    errors: {
-      name: false,
-      phone: false,
-      option: false,
-      message: false,
-    }
+    errors: true,
   };
-  
+
   render() {
-    const {name, phone, option,message} = this.state;
+    const { name, phone, option, message, errors } = this.state;
     const handleChange = (e) => {
       this.setState({
         [e.target.name]: e.target.value,
-      })
-    }
-    const validation = (name,phone,option, message) => {
-      if(name && name.length > 0) {
-        this.setState({
-          errors: {
-            name: true,
-          }
-        })
-      }
-      if(option) {
-        this.setState({
-          errors: {
-            option: true,
-          }
-        })
-      }
-      if(message && message.length > 0) {
-        this.setState({
-          errors: {
-            message: true,
-          }
-        })
-      }
-      if(phone && phone.length > 9) {
-        this.setState({
-          errors: {
-            message: true,
-          }
-        })
-      }
-    }
-    const onSubmit = (e) => {
+      });
+    };
+    const handleSubmit = (e) => {
       e.preventDefault();
-      validation(name, phone,option,message);
-    }
-    console.log(this.state.errors);
+      console.log(errors);
+      if (name.length > 0 && phone.length > 8 && option && message.length > 0) {
+        this.setState({
+          errors: false,
+        });
+      }
+    };
+
     return (
       <div className="form__wrapper">
-        <form onSubmit={(e) => onSubmit(e)} className="form">
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <div className="form__div">
-            <label className="form__label">
-              Name
-              <input onChange={(e) => handleChange(e)} value={name}  name="name" className="form__input" type="text" placeholder="Jack" />
+            <label className="form__label" htmlFor="user">
+              Name:
+              <input
+                className="form__input"
+                type="text"
+                id="user"
+                name="name"
+                value={name}
+                onChange={(e) => handleChange(e)}
+              />
+            </label>
+          </div>
+          <div className="form__div">
+            <label className="form__label" htmlFor="user">
+              Phone:
+              <input
+                className="form__input"
+                type="text"
+                name="phone"
+                value={phone}
+                onChange={handleChange}
+              />
             </label>
           </div>
           <div className="form__div">
             <label className="form__label">
-              Telephone number
-              <input value={phone} onChange={(e) => handleChange(e)} name="phone" className="form__input" type="Telephone" placeholder="313-313-312" />
+              Topic:
+              <select
+                className="form__select"
+                value={option}
+                onChange={handleChange}
+                name="option"
+              >
+                <option value="enquiry">Enquiry</option>
+                <option value="complaint">Complaint</option>
+                <option value="compliment">Compliment</option>
+                <option value="generalMessage">General Message</option>
+              </select>
             </label>
           </div>
           <div className="form__div">
-            <label className="form__label">Subject of message</label>
-            <select value={option} onChange={(e) => handleChange(e)} name="option" className="form__select" id="cars">
-              <option className="form__option" value="enquiry">
-                Enquiry
-              </option>
-              <option className="form__option" value="complaint">
-                Complaint
-              </option>
-              <option className="form__option" value="compliment">
-                Compliment
-              </option>
-              <option  className="form__option" value="message">
-                General Message
-              </option>
-            </select>
-          </div>
-          <div className="form__div">
-            <label className="form__label">
-              Message
-              <textarea name="message" value={message} onChange={(e) => handleChange(e)} className="form__input" type="text" placeholder="Lorem Ipsum..." />
+            <label className="form__label" htmlFor="user">
+              Message:
+              <textarea
+                className="form__input"
+                name="message"
+                value={message}
+                onChange={handleChange}
+              />
             </label>
           </div>
           <input className="form__btn" type="submit" value="Send" />
         </form>
-        {this.state.errors.name && this.state.errors.phone && this.state.errors.option && this.state.errors.message}
+        {errors ? null : <div className="form__send" onClick={() => {
+          this.setState({
+            errors: true,
+          })
+        }}>Send</div>}
       </div>
     );
   }
 }
+
+export default Form;
