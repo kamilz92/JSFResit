@@ -16,7 +16,6 @@ const ApiContextProvider = ({children}) => {
         const items = await data.json();
         setItems(items.cards);
     }
-
     return (
         <ApiContext.Provider value={items}>
             {children}

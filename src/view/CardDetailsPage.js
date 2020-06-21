@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ApiContext } from "../context/ApiContext";
+import CardDetails from '../components/CardDetails';
 import Error from "../components/Error";
 
-const CardDetails = () => {
+const CardDetailsPage = () => {
   const context = useContext(ApiContext);
   const { id } = useParams();
   const details = context.filter((item) => item.id === id);
@@ -12,8 +13,7 @@ const CardDetails = () => {
     <>
       {details.length === 1 ? (
         details.map((item) => {
-          return <div key={item.id}>{item.name}</div>;
-        })
+          return <CardDetails key={item.id} img={item.imageUrlHiRes} name={item.name} data={item} />})
       ) : (
         <Error id={id} />
       )}
@@ -21,4 +21,4 @@ const CardDetails = () => {
   );
 };
 
-export default CardDetails;
+export default CardDetailsPage;

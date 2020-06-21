@@ -1,0 +1,23 @@
+@import "./button";
+.details {
+  display: flex;
+  justify-content: center;
+  &__context {
+    padding: 10px 10px 10px 20px;
+  }
+  &__heading {
+    font-family: pokeFont;
+    color: $blue;
+  }
+  &__btn {
+    @extend .button;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  & .button {
+    align-self: flex-start;
+    margin: 10px;
+  }
+}
