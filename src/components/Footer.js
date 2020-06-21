@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return ( 
         <footer className="footer">
-            pokeFooter
+            <p>pokeFooter&copy;</p>
         </footer>
      );
 }

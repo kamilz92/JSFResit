@@ -1,15 +1,17 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from "react";
+import Button from "../components/Button";
 
-const Card = ({id,img}) => {
-    return ( 
-        <div className="card">
-            <div className="card__imgWrapper">
-                <img src={img} alt=""/>
-            </div>
-            <Link as="a" to={`/` + id}>Go to card</Link>
-        </div>
-     );
-}
- 
+const Card = ({ id, img }) => {
+  return (
+    <div className="card">
+      <div className="card__imgWrapper">
+        <img src={img} alt="" />
+      </div>
+      <Button to={`/${id}`}>
+        Go to card
+      </Button>
+    </div>
+  );
+};
+
 export default Card;

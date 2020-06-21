@@ -6,9 +6,10 @@ const Grass = () => {
   const context = useContext(ApiContext);
   const type = context.filter(item => item.types);
   const grass = type.filter(item => item.types.includes("Grass"));
+  console.log(grass)
   return (
-    <main>
-      {grass.map((item)=> <Card img={item.imageUrl} id={item.id}/>)}
+    <main className="grid">
+      {grass.map((item)=> <Card key={item.id} img={item.imageUrl} id={item.id}/>)}
     </main>
   );
 };

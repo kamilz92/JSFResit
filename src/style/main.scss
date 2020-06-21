@@ -1,7 +1,37 @@
-@import './components/pokeball';
 
+@import './variable';
+@import './components/pokeball';
+@import './components/header';
+@import './components/footer';
+@import './components/error';
+@import './components/button';
+@import './components/card';
 
 * {
     margin: 0;
     padding: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+p {
+    font-family: lato;
+}
+@font-face {
+    font-family: pokeFont;
+  src: url(../font/PokemonSolidNormal-xyWR.ttf);
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+    margin: 50px auto 50px;
 }

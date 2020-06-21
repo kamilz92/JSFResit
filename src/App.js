@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./view/Home";
 import Grass from "./view/Grass";
 import Contact from "./view/Contact";
+import CardDetailsPage from "./view/CardDetailsPage";
 import ApiContextProvider from "./context/ApiContext";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/grass" component={Grass} />
             <Route path="/contact" component={Contact} />
+            <Route path="/:id" component={CardDetailsPage} />
           </Switch>
           <Footer />
         </Router>
