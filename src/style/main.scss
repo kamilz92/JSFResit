@@ -8,6 +8,7 @@
 @import './components/card';
 @import './components/search';
 @import './components/details';
+@import './components/form';
 
 * {
     margin: 0;
@@ -36,4 +37,7 @@ p {
     grid-template-columns: repeat(5,1fr);
     gap: 10px;
     margin: 50px auto 50px;
+}
+.contact {
+    flex-grow: 1;
 }

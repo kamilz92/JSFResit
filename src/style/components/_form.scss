@@ -1,0 +1,41 @@
+@import "./button";
+@import "./search";
+.form {
+  background-color: rgba($blue, 0.2);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  &__wrapper {
+    margin: auto;
+    width: 50%;
+  }
+  &__btn {
+    @extend .button;
+    border: none;
+    width: 40%;
+    margin: 10px auto;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      margin: 0 auto;
+  }
+  &__label {
+      font-family: Lato;
+      padding: 10px;
+      align-self: flex-start;
+      font-size: 18px;
+  }
+  &__input {
+      @extend .search__input;
+      font-size: 18px;
+      background-color: rgba($blue, 0.8);
+      width: 100%;
+  }
+}
